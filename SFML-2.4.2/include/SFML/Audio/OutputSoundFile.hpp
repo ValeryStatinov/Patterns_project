@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Audio/Export.hpp>
-#include <SFML/System/NonCopyable.hpp>
+#include "../Audio/Export.hpp"
+#include "../System/NonCopyable.hpp"
 #include <string>
 
 
@@ -131,3 +131,4 @@ private:
 /// \see sf::SoundFileWriter, sf::InputSoundFile
 ///
 ////////////////////////////////////////////////////////////
+

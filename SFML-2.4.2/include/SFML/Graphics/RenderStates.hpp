@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/BlendMode.hpp>
-#include <SFML/Graphics/Transform.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/BlendMode.hpp"
+#include "../Graphics/Transform.hpp"
 
 
 namespace sf
@@ -172,3 +172,4 @@ public:
 /// \see sf::RenderTarget, sf::Drawable
 ///
 ////////////////////////////////////////////////////////////
+

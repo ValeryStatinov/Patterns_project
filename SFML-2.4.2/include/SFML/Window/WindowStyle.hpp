@@ -51,3 +51,4 @@ namespace Style
 
 
 #endif // SFML_WINDOWSTYLE_HPP
+

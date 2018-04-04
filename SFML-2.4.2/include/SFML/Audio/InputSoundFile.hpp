@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Audio/Export.hpp>
-#include <SFML/System/NonCopyable.hpp>
-#include <SFML/System/Time.hpp>
+#include "../Audio/Export.hpp"
+#include "../System/NonCopyable.hpp"
+#include "../System/Time.hpp"
 #include <string>
 #include <algorithm>
 
@@ -272,3 +272,4 @@ private:
 /// \see sf::SoundFileReader, sf::OutputSoundFile
 ///
 ////////////////////////////////////////////////////////////
+

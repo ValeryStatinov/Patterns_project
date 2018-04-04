@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
-#include <SFML/System/Utf.hpp>
+#include "../System/Export.hpp"
+#include "../System/Utf.hpp"
 #include <iterator>
 #include <locale>
 #include <string>
@@ -667,3 +667,4 @@ SFML_SYSTEM_API String operator +(const String& left, const String& right);
 /// interface for Unicode handling, see the sf::Utf classes.
 ///
 ////////////////////////////////////////////////////////////
+

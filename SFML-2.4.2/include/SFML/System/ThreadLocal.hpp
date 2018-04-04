@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
-#include <SFML/System/NonCopyable.hpp>
+#include "../System/Export.hpp"
+#include "../System/NonCopyable.hpp"
 #include <cstdlib>
 
 
@@ -101,3 +101,4 @@ private:
 /// use the sf::ThreadLocalPtr template class.
 ///
 ////////////////////////////////////////////////////////////
+

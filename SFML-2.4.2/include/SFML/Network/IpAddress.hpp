@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Network/Export.hpp>
-#include <SFML/System/Time.hpp>
+#include "../Network/Export.hpp"
+#include "../System/Time.hpp"
 #include <istream>
 #include <ostream>
 #include <string>
@@ -326,3 +326,4 @@ SFML_NETWORK_API std::ostream& operator <<(std::ostream& stream, const IpAddress
 /// nor other types of network addresses.
 ///
 ////////////////////////////////////////////////////////////
+

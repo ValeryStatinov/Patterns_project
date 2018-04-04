@@ -28,7 +28,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Config.hpp>
+#include "../Config.hpp"
 
 #if defined(SFML_SYSTEM_WINDOWS)
     #include <basetsd.h>
@@ -55,3 +55,4 @@ namespace sf
 
 
 #endif // SFML_SOCKETHANDLE_HPP
+

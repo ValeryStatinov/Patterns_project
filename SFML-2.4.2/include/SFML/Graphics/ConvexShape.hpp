@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Shape.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Shape.hpp"
 #include <vector>
 
 
@@ -151,3 +151,4 @@ private:
 /// \see sf::Shape, sf::RectangleShape, sf::CircleShape
 ///
 ////////////////////////////////////////////////////////////
+

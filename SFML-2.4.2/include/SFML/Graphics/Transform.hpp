@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/System/Vector2.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Rect.hpp"
+#include "../System/Vector2.hpp"
 
 
 namespace sf
@@ -448,3 +448,4 @@ SFML_GRAPHICS_API Vector2f operator *(const Transform& left, const Vector2f& rig
 /// \see sf::Transformable, sf::RenderStates
 ///
 ////////////////////////////////////////////////////////////
+

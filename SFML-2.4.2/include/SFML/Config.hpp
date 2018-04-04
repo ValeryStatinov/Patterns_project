@@ -229,3 +229,4 @@ namespace sf
 
 
 #endif // SFML_CONFIG_HPP
+

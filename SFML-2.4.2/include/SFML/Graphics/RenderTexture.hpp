@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Texture.hpp"
+#include "../Graphics/RenderTarget.hpp"
 
 
 namespace sf
@@ -281,3 +281,4 @@ private:
 /// \see sf::RenderTarget, sf::RenderWindow, sf::View, sf::Texture
 ///
 ////////////////////////////////////////////////////////////
+

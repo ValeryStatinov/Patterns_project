@@ -28,11 +28,11 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Transformable.hpp>
-#include <SFML/Graphics/Vertex.hpp>
-#include <SFML/Graphics/Rect.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Drawable.hpp"
+#include "../Graphics/Transformable.hpp"
+#include "../Graphics/Vertex.hpp"
+#include "../Graphics/Rect.hpp"
 
 
 namespace sf
@@ -277,3 +277,4 @@ private:
 /// \see sf::Texture, sf::Transformable
 ///
 ////////////////////////////////////////////////////////////
+

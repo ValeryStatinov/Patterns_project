@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Shape.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Shape.hpp"
 
 
 namespace sf
@@ -152,3 +152,4 @@ private:
 /// \see sf::Shape, sf::RectangleShape, sf::ConvexShape
 ///
 ////////////////////////////////////////////////////////////
+

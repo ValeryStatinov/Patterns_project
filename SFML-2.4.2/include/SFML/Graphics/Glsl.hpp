@@ -28,10 +28,10 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Transform.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/System/Vector3.hpp>
+#include "../Graphics/Transform.hpp"
+#include "../Graphics/Color.hpp"
+#include "../System/Vector2.hpp"
+#include "../System/Vector3.hpp"
 
 
 namespace sf
@@ -225,3 +225,4 @@ namespace Glsl
 /// \see sf::Shader
 ///
 ////////////////////////////////////////////////////////////
+

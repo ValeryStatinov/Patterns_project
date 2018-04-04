@@ -300,3 +300,4 @@ typedef Vector3<float> Vector3f;
 /// Note: for 2-dimensional vectors, see sf::Vector2.
 ///
 ////////////////////////////////////////////////////////////
+

@@ -29,7 +29,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
+#include "../System/Export.hpp"
 
 
 #if !defined(SFML_SYSTEM_ANDROID)
@@ -60,3 +60,4 @@ SFML_SYSTEM_API ANativeActivity* getNativeActivity();
 
 
 #endif // SFML_NATIVEACTIVITY_HPP
+

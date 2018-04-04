@@ -28,11 +28,11 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Transformable.hpp>
-#include <SFML/Graphics/VertexArray.hpp>
-#include <SFML/System/Vector2.hpp>
+#include "../Graphics/Export.hpp"
+#include "../Graphics/Drawable.hpp"
+#include "../Graphics/Transformable.hpp"
+#include "../Graphics/VertexArray.hpp"
+#include "../System/Vector2.hpp"
 
 
 namespace sf
@@ -353,3 +353,4 @@ private:
 /// \see sf::RectangleShape, sf::CircleShape, sf::ConvexShape, sf::Transformable
 ///
 ////////////////////////////////////////////////////////////
+

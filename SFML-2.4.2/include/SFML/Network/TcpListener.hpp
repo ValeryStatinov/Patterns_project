@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Network/Export.hpp>
-#include <SFML/Network/Socket.hpp>
-#include <SFML/Network/IpAddress.hpp>
+#include "../Network/Export.hpp"
+#include "../Network/Socket.hpp"
+#include "../Network/IpAddress.hpp"
 
 
 namespace sf
@@ -162,3 +162,4 @@ public:
 /// \see sf::TcpSocket, sf::Socket
 ///
 ////////////////////////////////////////////////////////////
+
