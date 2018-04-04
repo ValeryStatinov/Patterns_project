@@ -40,7 +40,7 @@ void AnimationManager::flip() {
   return;
 }
 
-void AnimationManager::load_from_xml(std::string& file_name, sf::Texture& texture) {
+void AnimationManager::load_from_xml(const std::string& file_name, sf::Texture& texture) {
   TiXmlDocument animFile(file_name.c_str());
 
   animFile.LoadFile();
@@ -83,7 +83,7 @@ void AnimationManager::color(const sf::Color& color) {
   return;
 }
 
-void AnimationManager::set_animation(std::string anim_name) {
+void AnimationManager::set_animation(const std::string& anim_name) {
   current_animation_ = anim_name;
   return;
 }

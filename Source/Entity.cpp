@@ -17,7 +17,7 @@ void Entity::draw_entity(sf::RenderTexture &render_texture, float time) {
   return;
 }
 
-void Entity::add_xml_animation(std::string file_name, sf::Texture& texture) {
+void Entity::add_xml_animation(const std::string& file_name, sf::Texture& texture) {
   animation_manager_.load_from_xml(file_name, texture);
   return;
 }

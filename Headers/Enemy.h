@@ -4,6 +4,7 @@
 #include <vector>
 enum EnemyState {wander, enemy_stay};
 enum EnemyStrength {weak, medium, strong};
+//-------------------class Enemy------------------------
 class Enemy : public Entity {
  public:
   Enemy();
@@ -22,7 +23,7 @@ class Enemy : public Entity {
   void go_to_target(float time, float speed_factor);
 };
 
-
+//------------------class FighterEnemy-------------------
 class FighterEnemy : public Enemy {
  public:
   FighterEnemy() = delete;
@@ -36,6 +37,7 @@ class FighterEnemy : public Enemy {
   static sf::Texture texture_;
 };
 
+//------------------class ArcherEnemy---------------------
 class ArcherEnemy : public Enemy {
  public:
   ArcherEnemy() = delete;
@@ -49,6 +51,7 @@ class ArcherEnemy : public Enemy {
   static sf::Texture texture_;
 };
 
+//------------------class MageEnemy------------------------
 class MageEnemy : public Enemy {
  public:
   MageEnemy() = delete;
@@ -66,15 +69,12 @@ class MageEnemy : public Enemy {
 
 class EnemyFactory {
  public:
-  Enemy* create_fighter_enemy(EnemyStrength strength);
-  Enemy* create_archer_enemy(EnemyStrength strength);
-  Enemy* create_mage_enemy(EnemyStrength strength);
-  std::vector<Enemy*> create_n_fighter_enemies(EnemyStrength strength, std::size_t n);
-  std::vector<Enemy*> create_n_archer_enemies(EnemyStrength strength, std::size_t n);
-  std::vector<Enemy*> create_n_mage_enemies(EnemyStrength strength, std::size_t n);
-
-
- private:
+  static Enemy* create_fighter_enemy(EnemyStrength strength);
+  static Enemy* create_archer_enemy(EnemyStrength strength);
+  static Enemy* create_mage_enemy(EnemyStrength strength);
+  static std::vector<Enemy*> create_n_fighter_enemies(EnemyStrength strength, std::size_t n);
+  static std::vector<Enemy*> create_n_archer_enemies(EnemyStrength strength, std::size_t n);
+  static std::vector<Enemy*> create_n_mage_enemies(EnemyStrength strength, std::size_t n);
 };
 
 #endif // ENEMY_H

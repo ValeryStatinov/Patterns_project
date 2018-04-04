@@ -31,9 +31,9 @@ class AnimationManager {
   void draw_animation(sf::RenderTexture& texture, float x, float y);
   void tick(float time);
   void flip();
-  void load_from_xml(std::string& file_name, sf::Texture& texture);
+  void load_from_xml(const std::string& file_name, sf::Texture& texture);
   void color(const sf::Color& color);
-  void set_animation(std::string anim_name);
+  void set_animation(const std::string& anim_name);
  private:
   std::string current_animation_;
   std::map<std::string, Animation> animation_list_;

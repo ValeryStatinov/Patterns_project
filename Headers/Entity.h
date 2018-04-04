@@ -14,7 +14,7 @@ class Entity {
   virtual ~Entity() {}
   virtual void update(float time) = 0;
   void draw_entity(sf::RenderTexture& render_texture, float time);
-  void add_xml_animation(std::string file_name, sf::Texture& texture);
+  void add_xml_animation(const std::string& file_name, sf::Texture& texture);
   sf::FloatRect get_rect();
   void set_position(float x, float y);
 
