@@ -57,3 +57,4 @@ enum PrimitiveType
 
 #endif // SFML_PRIMITIVETYPE_HPP
 
+

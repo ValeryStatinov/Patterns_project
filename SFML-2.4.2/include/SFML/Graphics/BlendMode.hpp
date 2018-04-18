@@ -214,3 +214,4 @@ SFML_GRAPHICS_API extern const BlendMode BlendNone;     ///< Overwrite dest with
 ///
 ////////////////////////////////////////////////////////////
 
+

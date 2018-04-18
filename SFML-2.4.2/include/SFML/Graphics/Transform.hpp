@@ -449,3 +449,4 @@ SFML_GRAPHICS_API Vector2f operator *(const Transform& left, const Vector2f& rig
 ///
 ////////////////////////////////////////////////////////////
 
+

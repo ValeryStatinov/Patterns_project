@@ -104,7 +104,7 @@ public:
 
 } // namespace sf
 
-#include <SFML/System/ThreadLocalPtr.inl>
+#include "../System/ThreadLocalPtr.inl"
 
 
 #endif // SFML_THREADLOCALPTR_HPP
@@ -156,4 +156,5 @@ public:
 /// can use it if you feel like it fits well your implementation.
 ///
 ////////////////////////////////////////////////////////////
+
 

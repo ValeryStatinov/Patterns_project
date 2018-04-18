@@ -227,3 +227,4 @@ SFML_WINDOW_API bool operator >=(const VideoMode& left, const VideoMode& right);
 ///
 ////////////////////////////////////////////////////////////
 
+

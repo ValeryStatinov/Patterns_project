@@ -61,3 +61,4 @@ SFML_SYSTEM_API ANativeActivity* getNativeActivity();
 
 #endif // SFML_NATIVEACTIVITY_HPP
 
+

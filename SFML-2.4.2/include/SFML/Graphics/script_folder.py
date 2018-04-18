@@ -9,8 +9,8 @@ for file_name in headers:
     lines = content.split('\n')
     content = ''
     for line in lines:
-      head_cur_dir = re.search(r'<SFML/\w+\.hpp>', line)
-      head_other_dir = re.search(r'<SFML/\w+/\w+\.hpp', line)
+      head_cur_dir = re.search(r'<SFML/\w+\.\w+>', line)
+      head_other_dir = re.search(r'<SFML/\w+/\w+\.\w+', line)
       if head_other_dir:
         line = line.replace('<', '"')
         line = line.replace('>', '"')

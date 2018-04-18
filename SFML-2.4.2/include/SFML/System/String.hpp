@@ -611,7 +611,7 @@ SFML_SYSTEM_API bool operator >=(const String& left, const String& right);
 ////////////////////////////////////////////////////////////
 SFML_SYSTEM_API String operator +(const String& left, const String& right);
 
-#include <SFML/System/String.inl>
+#include "../System/String.inl"
 
 } // namespace sf
 
@@ -667,4 +667,5 @@ SFML_SYSTEM_API String operator +(const String& left, const String& right);
 /// interface for Unicode handling, see the sf::Utf classes.
 ///
 ////////////////////////////////////////////////////////////
+
 

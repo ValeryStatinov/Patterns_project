@@ -274,3 +274,4 @@ SFML_GRAPHICS_API Color& operator *=(Color& left, const Color& right);
 ///
 ////////////////////////////////////////////////////////////
 
+

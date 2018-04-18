@@ -190,7 +190,7 @@ private:
     priv::ThreadFunc* m_entryPoint; ///< Abstraction of the function to run
 };
 
-#include <SFML/System/Thread.inl>
+#include "../System/Thread.inl"
 
 } // namespace sf
 
@@ -280,4 +280,5 @@ private:
 /// \see sf::Mutex
 ///
 ////////////////////////////////////////////////////////////
+
 
