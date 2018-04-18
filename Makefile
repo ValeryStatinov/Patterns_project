@@ -7,7 +7,7 @@ Patterns_project: Object_files/main.o Object_files/AnimationManager.o Object_fil
 	clang++ Object_files/main.o Object_files/AnimationManager.o Object_files/Enemy.o \
 	Object_files/Entity.o Object_files/tests.o Object_files/tinystr.o Object_files/tinyxml.o \
 	Object_files/tinyxmlerror.o Object_files/tinyxmlparser.o -o \
-	Patterns_project -L lib/ -Wl,-rpath,SFML-2.4.2/lib/ -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
+	Patterns_project -L SFML-2.4.2/lib/ -Wl,-rpath,SFML-2.4.2/lib/ -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 
 Object_files/main.o: Source/main.cpp
 	clang++ -c Source/main.cpp -std=c++11 -o Object_files/main.o
