@@ -9,6 +9,7 @@ Entity::Entity() {
   velocity_vector_.x = 0;
   velocity_vector_.y = 0;
   speed_ = 0;
+  animation_manager_.set_animation("stay");
 }
 
 void Entity::draw_entity(sf::RenderTexture &render_texture, float time) {
@@ -36,3 +37,5 @@ void Entity::set_position(float x, float y) {
   position_.y = y;
   return;
 }
+
+

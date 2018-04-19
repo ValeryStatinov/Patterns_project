@@ -9,7 +9,7 @@ Patterns_project: Object_files/main.o Object_files/AnimationManager.o Object_fil
 	Object_files/Entity.o Object_files/tests.o Object_files/tinystr.o Object_files/tinyxml.o \
 	Object_files/tinyxmlerror.o Object_files/tinyxmlparser.o Object_files/PlayingEnvironment.o \
 	Object_files/Player.o \
-	-o Patterns_project -L SFML-2.4.2/lib_off_website/ -Wl,-rpath,SFML-2.4.2/lib_off_website/,-v -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
+	-o Patterns_project -L SFML-2.4.2/lib_apt-get/ -Wl,-rpath,SFML-2.4.2/lib_apt-get/,-v -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 
 Object_files/main.o: Source/main.cpp
 	clang++ -c Source/main.cpp -std=c++11 -o Object_files/main.o

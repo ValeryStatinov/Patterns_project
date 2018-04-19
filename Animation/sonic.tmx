@@ -1,0 +1,25 @@
+<!DOCTYPE SpriteDecomposer>
+<sprites image="Images/sonic.png" transparentColor="">
+ <animation title="stay" delay="100">
+  <cut w="30" x="85" y="49" h="38" row="1" col="1"/>
+  <cut w="30" x="117,25" y="48,75" h="38" row="1" col="1"/>
+  <cut w="30" x="149" y="49" h="38" row="1" col="1"/>
+  <cut w="29" x="181" y="49" h="38" row="1" col="1"/>
+  <cut w="30" x="149" y="49" h="38" row="1" col="1"/>
+  <cut w="30" x="117" y="49" h="38" row="1" col="1"/>
+ </animation>
+ <animation title="run" delay="70">
+  <cut w="26" x="7" y="89" h="37" row="1" col="1"/>
+  <cut w="27" x="36" y="89" h="37" row="1" col="1"/>
+  <cut w="31" x="64" y="89" h="38" row="1" col="1"/>
+  <cut w="37" x="96" y="89" h="37" row="1" col="1"/>
+  <cut w="32" x="134" y="89" h="35" row="1" col="1"/>
+  <cut w="32" x="169" y="88" h="38" row="1" col="1"/>
+  <cut w="26" x="205" y="88" h="38" row="1" col="1"/>
+  <cut w="24" x="237" y="89" h="37" row="1" col="1"/>
+  <cut w="30" x="262" y="89" h="37" row="1" col="1"/>
+  <cut w="36" x="294" y="89" h="37" row="1" col="1"/>
+  <cut w="32" x="333" y="89" h="36" row="1" col="1"/>
+  <cut w="29" x="369" y="88" h="38" row="1" col="1"/>
+ </animation>
+</sprites>

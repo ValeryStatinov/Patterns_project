@@ -1,15 +1,17 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "Entity.h"
+
 #include <vector>
 enum EnemyState {wander, enemy_stay};
 enum EnemyStrength {weak, medium, strong};
+
 //-------------------class Enemy------------------------
 class Enemy : public Entity {
  public:
   Enemy();
   virtual ~Enemy() {}
-  virtual void update(float time) = 0;
+  virtual void update(PlayingEnvironment& play_env, float time) = 0;
 
  protected:
   EnemyState state_;
@@ -21,6 +23,7 @@ class Enemy : public Entity {
   float defence_;
   float health_;
   void go_to_target(float time, float speed_factor);
+  static sf::Texture load_texture(std::string file_name);
 };
 
 //------------------class FighterEnemy-------------------
@@ -30,10 +33,9 @@ class FighterEnemy : public Enemy {
   ~FighterEnemy() {}
   FighterEnemy(EnemyStrength strength);
   friend class EnemyFactory;
-  void update(float time);
+  void update(PlayingEnvironment& play_env, float time);
 
  private:
-  static sf::Texture load_texture();
   static sf::Texture texture_;
 };
 
@@ -44,10 +46,9 @@ class ArcherEnemy : public Enemy {
   ~ArcherEnemy() {}
   ArcherEnemy(EnemyStrength strength);
   friend class EnemyFactory;
-  void update(float time);
+  void update(PlayingEnvironment& play_env, float time);
 
  private:
-  static sf::Texture load_texture();
   static sf::Texture texture_;
 };
 
@@ -58,10 +59,9 @@ class MageEnemy : public Enemy {
   ~MageEnemy() {}
   MageEnemy(EnemyStrength strength);
   friend class EnemyFactory;
-  void update(float time);
+  void update(PlayingEnvironment& play_env, float time);
 
  private:
-  static sf::Texture load_texture();
   static sf::Texture texture_;
 };
 

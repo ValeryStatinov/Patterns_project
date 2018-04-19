@@ -2,6 +2,7 @@
 #define ADDITIONALALGEBRAICFUNCTIONS_H
 //---algebraic vector functions
 #include "../SFML-2.4.2/include/SFML/Graphics.hpp"
+#include <cmath>
 template <typename T>
 sf::Vector2<T> normalize(const sf::Vector2<T>& v) {
   sf::Vector2<T> normalized;

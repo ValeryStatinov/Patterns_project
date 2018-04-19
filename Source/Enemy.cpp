@@ -21,9 +21,16 @@ void Enemy::go_to_target(float time, float speed_factor) {
   return;
 }
 
-sf::Texture FighterEnemy::texture_ = FighterEnemy::load_texture();
-sf::Texture ArcherEnemy::texture_ = ArcherEnemy::load_texture();
-sf::Texture MageEnemy::texture_ = MageEnemy::load_texture();
+sf::Texture Enemy::load_texture(std::string file_name) {
+  sf::Texture texture;
+  texture.loadFromFile(file_name);
+  return texture;
+}
+
+sf::Texture FighterEnemy::texture_ = Enemy::load_texture("Images/FighterEnemy.png");
+sf::Texture ArcherEnemy::texture_ = ArcherEnemy::load_texture("Images/ArcherEnemy.png");
+sf::Texture MageEnemy::texture_ = MageEnemy::load_texture("Images/MageEnemy.png");
+
 /////////////// FIGHTER ENEMY ////////////////////////////
 FighterEnemy::FighterEnemy(EnemyStrength strength) : Enemy() {//TODO adjust parameters
   switch(strength) {
@@ -56,13 +63,9 @@ FighterEnemy::FighterEnemy(EnemyStrength strength) : Enemy() {//TODO adjust para
   animation_manager_.set_animation("stay");
 }
 
-sf::Texture FighterEnemy::load_texture() {
-  sf::Texture temp_texture;
-  temp_texture.loadFromFile("Images/FighterEnemy.png");
-  return temp_texture;
-}
 
-void FighterEnemy::update(float time) { // TODO enemy logic ai
+
+void FighterEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     stay_timer_ += time;
     animation_manager_.set_animation("stay");
@@ -113,13 +116,9 @@ ArcherEnemy::ArcherEnemy(EnemyStrength strength) : Enemy() { //TODO adjust param
   animation_manager_.set_animation("stay");
 }
 
-sf::Texture ArcherEnemy::load_texture() {
-  sf::Texture temp_texture;
-  temp_texture.loadFromFile("Images/ArcherEnemy.png");
-  return temp_texture;
-}
 
-void ArcherEnemy::update(float time) { // TODO enemy logic ai
+
+void ArcherEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     animation_manager_.set_animation("stay");
     stay_timer_ += time;
@@ -169,13 +168,9 @@ MageEnemy::MageEnemy(EnemyStrength strength) : Enemy() { //TODO adjust parameter
   animation_manager_.set_animation("stay");
 }
 
-sf::Texture MageEnemy::load_texture() {
-  sf::Texture temp_texture;
-  temp_texture.loadFromFile("Images/MageEnemy.png");
-  return temp_texture;
-}
 
-void MageEnemy::update(float time) { // TODO enemy logic ai
+
+void MageEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     stay_timer_ += time;
     animation_manager_.set_animation("stay");
