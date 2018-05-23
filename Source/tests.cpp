@@ -12,7 +12,7 @@ void demonstrate() {
   sf::Clock clock;
   PlayingEnvironment plenv;
   ArcherPlayerBuilder bld("Images/sonic.png");
-  std::shared_ptr player = bld.get_player();
+  std::shared_ptr<Player> player = bld.get_player();
   while(window.isOpen()) {
     sf::Event event;
     float time = clock.getElapsedTime().asMicroseconds();
@@ -27,7 +27,7 @@ void demonstrate() {
     }
 // UPDATE AND RENDER //
     visable.clear();
-
+    player->update(plenv, time);
     visable.display();
     window.clear();
     sf::Sprite sprite(visable.getTexture());

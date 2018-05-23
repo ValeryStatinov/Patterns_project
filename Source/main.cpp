@@ -12,7 +12,6 @@
 using namespace std;
 
 int main() {
-  std::shared_ptr<int> p;
   demonstrate();
   return 0;
 }
