@@ -1,36 +1,8 @@
 #include "../Headers/Player.h"
 
-Player::Player(PlayerClass player_class) : Entity(), class_(player_class) {}
-
-void Player::update(PlayingEnvironment &play_env, float time) {
-  return;
-}
-
-void Player::key_check(std::map<sf::Keyboard::Key, bool> &keys) {
-  if (keys[sf::Keyboard::Right]) {
-    velocity_vector_.x += 1;
-    state_ = run;
-    dir_ = right;
-  }
-  if (keys[sf::Keyboard::Left]) {
-    velocity_vector_.x -= 1;
-    state_ = run;
-    dir_ = left;
-  }
-  if (keys[sf::Keyboard::Up]) {
-    velocity_vector_.y -= 1;
-    state_ = run;
-  }
-  if (keys[sf::Keyboard::Down]) {
-    velocity_vector_.y += 1;
-    state_ = run;
-  }
-  velocity_vector_ = normalize(velocity_vector_);
-  return;
-}
-
-void Player::set_texture(std::string file_name) {
-  texture_.loadFromFile(file_name);
+Player::Player(StaticEntityParameters* static_params)
+  : Entity(static_params) {
+  state_ = stay;
 }
 
 void Player::set_attack(float attack) {
@@ -45,96 +17,75 @@ void Player::set_health(float health) {
   health_ = health;
 }
 
+void Player::check_map_collision(const std::vector<Object> &solid) {
+  //check x
+  sf::FloatRect r = solid[0].rect;
+  for (auto it = solid.begin(); it != solid.end(); ++it) {
+    if ((this->get_rect()).intersects((it->rect))) {
+      if (velocity_vector_.x > 0) {
+        position_.x = it->rect.left - static_params_->size_.x;
+      }
+      if (velocity_vector_.x < 0) {
+        position_.x = it->rect.left + it->rect.width;
+      }
+    }
+  }
+}
+
+void Player::key_check(std::map<sf::Keyboard::Key, bool> &keys) {
+  if (keys[sf::Keyboard::Right]) {
+    velocity_vector_.x = 1;
+  }
+  if (keys[sf::Keyboard::Left]) {
+    velocity_vector_.x = -1;
+  }
+  if (keys[sf::Keyboard::Up]) {
+    velocity_vector_.y = -1;
+  }
+  if (keys[sf::Keyboard::Down]) {
+    velocity_vector_.y = 1;
+  }
+  velocity_vector_ = normalize(velocity_vector_);
+  for (auto it = keys.begin(); it != keys.end(); ++it) {
+    it->second = false;
+  }
+  return;
+}
+
+void Player::update(float time) {
+  position_ += velocity_vector_ * speed_ * time;
+  velocity_vector_.x = 0;
+  velocity_vector_.y = 0;
+}
+
+
 
 
 ///////-----------BUILDER------------
-
 PlayerBuilder::PlayerBuilder() {}
 
-std::shared_ptr<Player> PlayerBuilder::get_player() {
-  return player_;
+Player PlayerBuilder::build_player(const std::string& image_name, const std::string& animation_name,
+                                   float x, float y) {
+  StaticEntityParameters* static_params = new StaticEntityParameters;
+  static_params->set_texture(image_name);
+  static_params->set_size(x, y);
+  Player p(static_params);
+  p.add_xml_animation(animation_name);
+  p.set_attack(100);
+  p.set_defence(100);
+  p.set_health(100);
+  return p;
 }
 
-FighterPlayerBuilder::FighterPlayerBuilder(std::string file_name) {
-  player_ = std::make_shared<Player>(Player(fighter));
-  player_->set_texture(file_name);
-  this->build_attack();
-  this->build_defence();
-  this->build_health();
+Player PlayerBuilder::build_player(const std::string &image_name, const std::string &animation_name,
+                                   sf::Vector2f size) {
+  StaticEntityParameters* static_params = new StaticEntityParameters;
+  static_params->set_texture(image_name);
+  static_params->set_size(size);
+  Player p(static_params);
+  p.add_xml_animation(animation_name);
+  p.set_attack(100);
+  p.set_defence(100);
+  p.set_health(100);
+  return p;
 }
-
-
-void FighterPlayerBuilder::build_attack() {
-  player_->set_attack(100);
-}
-
-void FighterPlayerBuilder::build_defence() {
-  player_->set_defence(100);
-}
-
-void FighterPlayerBuilder::build_health() {
-  player_->set_health(100);
-}
-
-ArcherPlayerBuilder::ArcherPlayerBuilder(std::string file_name) {
-  player_ = std::make_shared<Player>(Player(archer));
-  player_->set_texture(file_name);
-  this->build_attack();
-  this->build_defence();
-  this->build_health();
-}
-
-void ArcherPlayerBuilder::build_attack() {
-  player_->set_attack(150);
-}
-
-void ArcherPlayerBuilder::build_defence() {
-  player_->set_defence(80);
-}
-
-void ArcherPlayerBuilder::build_health() {
-  player_->set_health(70);
-}
-
-MagePlayerBuilder::MagePlayerBuilder(std::string file_name) {
-  player_ = std::make_shared<Player>(Player(mage));
-  player_->set_texture(file_name);
-  this->build_attack();
-  this->build_defence();
-  this->build_health();
-}
-
-void MagePlayerBuilder::build_attack() {
-  player_->set_attack(180);
-}
-
-void MagePlayerBuilder::build_defence() {
-  player_->set_defence(60);
-}
-
-void MagePlayerBuilder::build_health() {
-  player_->set_defence(60);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

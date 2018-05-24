@@ -1,3 +1,4 @@
 Patterns_project*
 deployment.pri
 Object_files/*.o
+build-{CurrentKit:FileSystemName}-Debug

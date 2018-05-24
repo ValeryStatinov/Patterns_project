@@ -6,7 +6,6 @@
 #include "../Headers/Entity.h"
 #include "../Headers/Enemy.h"
 #include "../Headers/Player.h"
-#include "../Headers/PlayingEnvironment.h"
 #include <memory>
 #include "../Headers/tests.h"
 using namespace std;

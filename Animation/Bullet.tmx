@@ -1,0 +1,19 @@
+<!DOCTYPE SpriteDecomposer>
+<sprites image="Images/Bullet.png" transparentColor="">
+ <animation title="fly" delay="80">
+  <cut w="17" x="123" y="297" h="17" row="1" col="1"/>
+  <cut w="17" x="145" y="297" h="17" row="1" col="1"/>
+  <cut w="17" x="167" y="298" h="16" row="1" col="1"/>
+  <cut w="17" x="189" y="298" h="16" row="1" col="1"/>
+ </animation>
+ <animation title="fly2" delay="80">
+  <cut w="11" x="123" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="139" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="154" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="170" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="186" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="202" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="218" y="269" h="11" row="1" col="1"/>
+  <cut w="11" x="234" y="269" h="10" row="1" col="1"/>
+ </animation>
+</sprites>

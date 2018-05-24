@@ -1,7 +1,8 @@
 #include "../Headers/Enemy.h"
 #include <ctime>
 
-Enemy::Enemy() {
+Enemy::Enemy(StaticEntityParameters* static_params)
+  : Entity(static_params) {
   srand(time(NULL));
   stay_time_ = rand() % 5000 + 2500;
   stay_timer_ = 0;
@@ -21,18 +22,10 @@ void Enemy::go_to_target(float time, float speed_factor) {
   return;
 }
 
-sf::Texture Enemy::load_texture(std::string file_name) {
-  sf::Texture texture;
-  texture.loadFromFile(file_name);
-  return texture;
-}
-
-sf::Texture FighterEnemy::texture_ = Enemy::load_texture("Images/FighterEnemy.png");
-sf::Texture ArcherEnemy::texture_ = ArcherEnemy::load_texture("Images/ArcherEnemy.png");
-sf::Texture MageEnemy::texture_ = MageEnemy::load_texture("Images/MageEnemy.png");
-
 /////////////// FIGHTER ENEMY ////////////////////////////
-FighterEnemy::FighterEnemy(EnemyStrength strength) : Enemy() {//TODO adjust parameters
+FighterEnemy::FighterEnemy(StaticEntityParameters* static_params,
+                           EnemyStrength strength)
+  : Enemy(static_params) {//TODO adjust parameters
   switch(strength) {
     case weak:
       strength_ = weak;
@@ -59,13 +52,11 @@ FighterEnemy::FighterEnemy(EnemyStrength strength) : Enemy() {//TODO adjust para
   state_ = enemy_stay;
   target_.x = 0;
   target_.y = 0;
-  this->add_xml_animation("Animation/FighterEnemy.tmx", texture_);
-  animation_manager_.set_animation("stay");
 }
 
 
 
-void FighterEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
+/*void FighterEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     stay_timer_ += time;
     animation_manager_.set_animation("stay");
@@ -81,11 +72,13 @@ void FighterEnemy::update(PlayingEnvironment& play_env, float time) { // TODO en
     go_to_target(time, 1);
   }
   return;
-}
+}*/
 
 ////////////////// ARCHER ENEMY //////////////////////////////
 
-ArcherEnemy::ArcherEnemy(EnemyStrength strength) : Enemy() { //TODO adjust parameters
+ArcherEnemy::ArcherEnemy(StaticEntityParameters* static_params,
+                         EnemyStrength strength)
+  : Enemy(static_params) { //TODO adjust parameters
   switch(strength) {
     case weak:
       strength_ = weak;
@@ -112,13 +105,11 @@ ArcherEnemy::ArcherEnemy(EnemyStrength strength) : Enemy() { //TODO adjust param
   state_ = enemy_stay;
   target_.x = 0;
   target_.y = 0;
-  this->add_xml_animation("Animation/ArcherEnemy.tmx", texture_);
-  animation_manager_.set_animation("stay");
 }
 
 
 
-void ArcherEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
+/*void ArcherEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     animation_manager_.set_animation("stay");
     stay_timer_ += time;
@@ -134,10 +125,12 @@ void ArcherEnemy::update(PlayingEnvironment& play_env, float time) { // TODO ene
     go_to_target(time, 1);
   }
   return;
-}
+}*/
 
 /////////////////////// MAGE ENEMY ////////////////////////////////
-MageEnemy::MageEnemy(EnemyStrength strength) : Enemy() { //TODO adjust parameters
+MageEnemy::MageEnemy(StaticEntityParameters* static_params,
+                     EnemyStrength strength)
+  : Enemy(static_params) { //TODO adjust parameters
   switch(strength) {
     case weak:
       strength_ = weak;
@@ -164,13 +157,11 @@ MageEnemy::MageEnemy(EnemyStrength strength) : Enemy() { //TODO adjust parameter
   state_ = enemy_stay;
   target_.x = 0;
   target_.y = 0;
-  this->add_xml_animation("Animation/MageEnemy.tmx", texture_);
-  animation_manager_.set_animation("stay");
 }
 
 
 
-void MageEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
+/*void MageEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy logic ai
   if (state_ == enemy_stay) {
     stay_timer_ += time;
     animation_manager_.set_animation("stay");
@@ -186,51 +177,94 @@ void MageEnemy::update(PlayingEnvironment& play_env, float time) { // TODO enemy
     go_to_target(time, 1);
   }
   return;
-}
+}*/
 
 //////////////////////// FACTORY ////////////////////////////
-Enemy* EnemyFactory::create_fighter_enemy(EnemyStrength strength) {
-  Enemy* enemy = new FighterEnemy(strength);
+EnemyFactory::EnemyFactory() {
+  static_params_ = new StaticEntityParameters;
+}
+
+EnemyFactory::~EnemyFactory() {
+  delete static_params_;
+}
+
+void EnemyFactory::set_enemy_size(float x, float y) {
+  static_params_->set_size(x, y);
+  return;
+}
+
+void EnemyFactory::set_enemy_size(sf::Vector2f size) {
+  static_params_->set_size(size);
+}
+
+//fighter factory
+FighterEnemyFactory::FighterEnemyFactory(const std::string& image_name, const std::string& animation_name)
+  : EnemyFactory(){
+  static_params_->set_texture(image_name);
+  static_params_->set_size(0, 0);
+  animation_name_ = animation_name;
+}
+
+Enemy* FighterEnemyFactory::create_enemy(EnemyStrength strength) {
+  Enemy* enemy = new FighterEnemy(static_params_, strength);
+  enemy->add_xml_animation(animation_name_);
   return enemy;
 }
 
-Enemy* EnemyFactory::create_archer_enemy(EnemyStrength strength) {
-  Enemy* enemy = new ArcherEnemy(strength);
+std::list<Enemy*> FighterEnemyFactory::create_enemies(EnemyStrength strength, std::size_t n) {
+  std::list<Enemy*> enemies;
+  for (std::size_t i = 0; i < n; ++i) {
+    Enemy* enemy = new FighterEnemy(static_params_, strength);
+    enemy->add_xml_animation(animation_name_);
+    enemies.push_back(enemy);
+  }
+  return enemies;
+}
+
+//archer factory
+ArcherEnemyFactory::ArcherEnemyFactory(const std::string& image_name, const std::string& animation_name)
+  : EnemyFactory() {
+  static_params_->set_texture(image_name);
+  static_params_->set_size(0, 0);
+  animation_name_ = animation_name;
+}
+
+Enemy* ArcherEnemyFactory::create_enemy(EnemyStrength strength) {
+  Enemy* enemy = new ArcherEnemy(static_params_, strength);
+  enemy->add_xml_animation(animation_name_);
   return enemy;
 }
 
-Enemy* EnemyFactory::create_mage_enemy(EnemyStrength strength) {
-  Enemy* enemy = new MageEnemy(strength);
+std::list<Enemy*> ArcherEnemyFactory::create_enemies(EnemyStrength strength, std::size_t n) {
+  std::list<Enemy*> enemies;
+  for (std::size_t i = 0; i < n; ++i) {
+    Enemy* enemy = new ArcherEnemy(static_params_, strength);
+    enemy->add_xml_animation(animation_name_);
+    enemies.push_back(enemy);
+  }
+  return enemies;
+}
+
+//mage factory
+MageEnemyFactory::MageEnemyFactory(const std::string& image_name, const std::string& animation_name)
+  : EnemyFactory() {
+  static_params_->set_texture(image_name);
+  static_params_->set_size(0, 0);
+  animation_name_ = animation_name;
+}
+
+Enemy* MageEnemyFactory::create_enemy(EnemyStrength strength) {
+  Enemy* enemy = new MageEnemy(static_params_, strength);
+  enemy->add_xml_animation(animation_name_);
   return enemy;
 }
 
-std::vector<Enemy*> EnemyFactory::create_n_fighter_enemies(EnemyStrength strength, std::size_t n) {
-  std::vector<Enemy*> vect;
+std::list<Enemy*> MageEnemyFactory::create_enemies(EnemyStrength strength, std::size_t n) {
+  std::list<Enemy*> enemies;
   for (std::size_t i = 0; i < n; ++i) {
-    vect.push_back(create_fighter_enemy(strength));
+    Enemy* enemy = new MageEnemy(static_params_, strength);
+    enemy->add_xml_animation(animation_name_);
+    enemies.push_back(enemy);
   }
-  return vect;
+  return enemies;
 }
-
-std::vector<Enemy*> EnemyFactory::create_n_archer_enemies(EnemyStrength strength, std::size_t n) {
-  std::vector<Enemy*> vect;
-  for (std::size_t i = 0; i < n; ++i) {
-    vect.push_back(create_archer_enemy(strength));
-  }
-  return vect;
-}
-
-std::vector<Enemy*> EnemyFactory::create_n_mage_enemies(EnemyStrength strength, std::size_t n) {
-  std::vector<Enemy*> vect;
-  for (std::size_t i = 0; i < n; ++i) {
-    vect.push_back(create_mage_enemy(strength));
-  }
-  return vect;
-}
-
-
-
-
-
-
-
